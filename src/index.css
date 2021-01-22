@@ -11,3 +11,9 @@ div[data-reactroot] {
   padding: 0;
   margin: 0;
 }
+
+.searchDiv {
+  text-align: center;
+  margin-top: 50px;
+  
+}
