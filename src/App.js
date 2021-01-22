@@ -5,8 +5,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Search/>
+        <h1 id="title">Directory</h1>
       </header>
+      <Search/>
     </div>
   );
 }

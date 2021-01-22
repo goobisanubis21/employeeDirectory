@@ -12,8 +12,23 @@ div[data-reactroot] {
   margin: 0;
 }
 
+body {
+  background-color: rgb(218, 255, 243);
+}
+
+#title {
+  text-align: center;
+  font-size: 50px;
+}
+
 .searchDiv {
   text-align: center;
   margin-top: 50px;
-  
+}
+
+.searchBtn {
+  color: white;
+  background-color: rgb(0, 162, 255);
+  border-radius: 50px;
+  cursor: pointer;
 }
