@@ -7,6 +7,7 @@ function SearchBar(props) {
                 <input
                     value={props.search}
                     name="employees"
+                    onChange={props.handleInputChange}
                     type="text"
                     className="searchBar"
                     placeholder="Search for Employee"
