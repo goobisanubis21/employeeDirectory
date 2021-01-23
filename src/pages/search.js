@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import SearchBar from "../components/search";
 import Container from "../components/Container";
-import SearchResults from "../components/SearchResults";
 import Table from "../components/Table"
 
 class Search extends Component {
@@ -14,7 +13,7 @@ class Search extends Component {
 
     componentDidMount() {
         API.getUser()
-            .then(res => this.setState({ employees: res.data }))
+            .then(res => this.setState({ employees: res.data.results }))
             .catch(err => console.log(err))
     }
 
@@ -43,9 +42,8 @@ class Search extends Component {
                     <SearchBar
                         handleFormSubmit={this.handleFormSubmit}
                         handleInputChange={this.handleInputChange}
-                        employees={this.state.employees}
                     />
-                    {this.state.employees.length ? <SearchResults results={this.state.employees}/> : null}
+                    {/* {this.state.employees.length ? <Table results={this.state.employees}/> : null} */}
                     <Table results = {this.state.employees}/>
                     {/* <Table results={} /> */}
                      {/* table component that accepts a prop for the data. if filtered employees is empty pass employee array through */}

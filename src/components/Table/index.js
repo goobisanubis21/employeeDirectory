@@ -3,18 +3,24 @@ import React from "react";
 function Table(props) {
     return (
         <table className="tableResults">
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Phone Number</th>
-            </tr>
-            <tr>
-                <td>{props.employees}</td>
-                <td>parrino</td>
-                <td>email@email.com</td>
-                <td>1234567890</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                {props.results.map(results => (
+                    <tr key={results.login.uuid}>
+                        <td>{results.name.first}</td>
+                        <td>{results.name.last}</td>
+                        <td>{results.email}</td>
+                        <td>{results.cell}</td>
+                    </tr>
+                ))}
+            </tbody>
         </table>
     )
 }
