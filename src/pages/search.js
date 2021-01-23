@@ -23,6 +23,9 @@ class Search extends Component {
 
     handleFormSubmit = event => {
         // filter the employees to find names that include what is typed in search
+
+        // this.setState({filteredEmployees: employees.filter(employees.name.first.includes(search.value))})
+
         // setState of filtered employees to new array
         event.preventDefault();
         API.getUser(this.state.search)
@@ -43,8 +46,8 @@ class Search extends Component {
                         handleFormSubmit={this.handleFormSubmit}
                         handleInputChange={this.handleInputChange}
                     />
-                    {/* {this.state.employees.length ? <Table results={this.state.employees}/> : null} */}
-                    <Table results = {this.state.employees}/>
+                    {this.state.employees.length ? <Table results={this.state.employees}/> : <Table results={this.state.filteredEmployees}/>}
+                    {/* <Table results = {this.state.employees}/> */}
                     {/* <Table results={} /> */}
                      {/* table component that accepts a prop for the data. if filtered employees is empty pass employee array through */}
                 </Container>
