@@ -8,6 +8,7 @@ function SearchBar(props) {
                     value={props.search}
                     name="employees"
                     onChange={props.handleInputChange}
+                    // onChange={props.handFormSubmit}
                     type="text"
                     className="searchBar"
                     placeholder="Search for Employee"
@@ -16,7 +17,9 @@ function SearchBar(props) {
                 <button
                     type="submit"
                     className="searchBtn"
-                    onClick={props.handleFormSubmit}>
+                    onClick={props.handleFormSubmit}
+                    // onClick={props.handleInputChange}
+                    >
                     Search
                 </button>
             </form>

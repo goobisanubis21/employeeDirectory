@@ -19,14 +19,16 @@ class Search extends Component {
 
     handleInputChange = event => {
         this.setState({ search: event.target.value });
+        const { search, employees } = this.state;
+        if (search === "") {
+            return
+        } else {
+            const filteredEmployees = employees.filter(employees => employees.name.first.toLowerCase().includes(search.toLocaleLowerCase()));
+            this.setState({ filteredEmployees });
+        }
     };
 
     handleFormSubmit = event => {
-        // filter the employees to find names that include what is typed in search
-
-        // this.setState({filteredEmployees: employees.filter(employees.name.first.includes(search.value))})
-
-        // setState of filtered employees to new array
         event.preventDefault();
         API.getUser(this.state.search)
             .then(res => {
@@ -46,10 +48,7 @@ class Search extends Component {
                         handleFormSubmit={this.handleFormSubmit}
                         handleInputChange={this.handleInputChange}
                     />
-                    {this.state.employees.length ? <Table results={this.state.employees}/> : <Table results={this.state.filteredEmployees}/>}
-                    {/* <Table results = {this.state.employees}/> */}
-                    {/* <Table results={} /> */}
-                     {/* table component that accepts a prop for the data. if filtered employees is empty pass employee array through */}
+                    {!this.state.search.length ? <Table results={this.state.employees}/> : <Table results={this.state.filteredEmployees}/>}
                 </Container>
             </div>
         )
