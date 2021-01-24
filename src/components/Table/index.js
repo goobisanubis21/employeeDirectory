@@ -1,5 +1,6 @@
 import React from "react";
 
+// creates employee table
 function Table(props) {
     return (
         <table className="tableResults">

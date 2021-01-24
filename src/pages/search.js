@@ -4,6 +4,7 @@ import SearchBar from "../components/search";
 import Container from "../components/Container";
 import Table from "../components/Table"
 
+// class component setting state
 class Search extends Component {
     state = {
         search: "",
@@ -11,16 +12,22 @@ class Search extends Component {
         filteredEmployees: []
     };
 
+    // function to get data from apr
     componentDidMount() {
         API.getUser()
-            .then(res => this.setState({ employees: res.data.results }))
+            .then(res => this.setState({
+                employees: res.data.results
+            }))
             .catch(err => console.log(err))
     }
 
+    // function to filter employee list based upon whats typed in serach bar
     handleInputChange = event => {
-        this.setState({ search: event.target.value });
+        this.setState({
+            search: event.target.value
+        });
         const { search, employees } = this.state;
-        if (search === "") {
+        if (search === " ") {
             return
         } else {
             const filteredEmployees = employees.filter(employees => employees.name.first.toLowerCase().includes(search.toLocaleLowerCase()));
@@ -28,27 +35,24 @@ class Search extends Component {
         }
     };
 
-    handleFormSubmit = event => {
-        event.preventDefault();
-        API.getUser(this.state.search)
-            .then(res => {
-                if (res.data.status === "error") {
-                    throw new Error(res.data.message);
-                }
-                this.setState({ results: res.data.message, error: "" });
-            })
-            .catch(err => this.setState({ error: err.message }));
-    };
+    // function to allow user to click on a button and alphabetize employee list by first name
+    handleSort = event => {
+        event.preventDefault()
+        const { employees } = this.state
+        employees.sort((a, b) => (a.name.first > b.name.first) ? 1 : -1)
+        this.setState({ employees })
+    }
 
+    // returning html with functions and data passed in
     render() {
         return (
             <div>
-                <Container>
+                <Container >
                     <SearchBar
-                        handleFormSubmit={this.handleFormSubmit}
+                        handleSort={this.handleSort}
                         handleInputChange={this.handleInputChange}
                     />
-                    {!this.state.search.length ? <Table results={this.state.employees}/> : <Table results={this.state.filteredEmployees}/>}
+                    {!this.state.search.length ? <Table results={this.state.employees} /> : <Table results={this.state.filteredEmployees} />}
                 </Container>
             </div>
         )

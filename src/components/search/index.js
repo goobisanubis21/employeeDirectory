@@ -1,5 +1,6 @@
 import React from "react";
 
+// creates search bar
 function SearchBar(props) {
     return (
         <div className="searchDiv">
@@ -8,7 +9,6 @@ function SearchBar(props) {
                     value={props.search}
                     name="employees"
                     onChange={props.handleInputChange}
-                    // onChange={props.handFormSubmit}
                     type="text"
                     className="searchBar"
                     placeholder="Search for Employee"
@@ -17,10 +17,9 @@ function SearchBar(props) {
                 <button
                     type="submit"
                     className="searchBtn"
-                    onClick={props.handleFormSubmit}
-                    // onClick={props.handleInputChange}
+                    onClick={props.handleSort}
                     >
-                    Search
+                    Alphabetize
                 </button>
             </form>
         </div>
