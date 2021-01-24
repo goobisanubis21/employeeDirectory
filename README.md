@@ -18,4 +18,4 @@ The employee directory app allows a user to see a list of all the employees in t
 
 ### Github Code: https://github.com/goobisanubis21/employeedirectory
 
-### Github Pages:
+### Github Pages: https://goobisanubis21.github.io/employeedirectory/
